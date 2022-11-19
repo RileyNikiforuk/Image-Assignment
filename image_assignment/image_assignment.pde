@@ -2,6 +2,7 @@
 int appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 float backgroundImageX2, backgroundImageY2, backgroundImageWidth2, backgroundImageHeight2;
+float textX1, textY1, textX2, textY2;
 float topX, topY, topWidth, topHeight;
 float bottomX, bottomY, bottomWidth, bottomHeight;
 float picWidthAdjusted1=0.0, picHeightAdjusted1=0.0;
@@ -10,6 +11,7 @@ float picWidthAdjusted3=0.0, picHeightAdjusted3=0.0;
 PImage pic1, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
+PFont font;
 //
 void setup()
 {
@@ -21,6 +23,7 @@ void setup()
   pic1 = loadImage("../images used/slammedsupramk5.jpg");
   pic2 = loadImage("../images used/slammed gtr.jpg");
   //pic3 = loadImage("../images used/slammed gtr.jpg");
+  font = loadFont("HarlowSolid-48.vlw");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -37,6 +40,10 @@ void setup()
   topY = appHeight * 4/6;
   topWidth = appWidth * 6/20;
   topHeight = appHeight * 6/20;
+  textX1 = appWidth * 2/20;
+  textY1 = appHeight * 13/20;
+  textX2 = appWidth *13/20;
+  textY2 = appHeight * 9/20;
   //
   int picWidth1 = 1706;//slammed supra mk5
   int picHeight1 = 960;
@@ -110,6 +117,10 @@ void draw()
   image(pic2, topX, topY, picWidthAdjusted2, picHeightAdjusted2);
   //image(pic3, bottomX, bottomY, bottomWidth, bottomHeight);
   image(pic2, backgroundImageX2, backgroundImageY2, backgroundImageWidth2, backgroundImageHeight2);
+  text("Without Aspect Ratio", textX2, textY2);
+  fill(0);
+  textSize(30);
+  text("With Aspect Ratio", textX1, textY1);
 }//End draw
 //
 void keyPressed() {
