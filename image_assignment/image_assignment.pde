@@ -1,127 +1,139 @@
 //Global Variables
 int appWidth, appHeight;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
-float backgroundImageX2, backgroundImageY2, backgroundImageWidth2, backgroundImageHeight2;
-float textX1, textY1, textX2, textY2;
 float topX, topY, topWidth, topHeight;
 float bottomX, bottomY, bottomWidth, bottomHeight;
 float picWidthAdjusted1=0.0, picHeightAdjusted1=0.0;
-PImage pic1, pic2;
+float picWidthAdjusted2=0.0, picHeightAdjusted2=0.0;
+float picWidthAdjusted3=0.0, picHeightAdjusted3=0.0;
+PImage pic1, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
-PFont font;
 //
 void setup()
 {
-  size(1200, 800);
+  size(1280, 720); //Landscape
+  //Copy Display Algorithm from Hello World
   appWidth = width;
   appHeight = height;
   //
   //Population
-<<<<<<< HEAD
   pic1 = loadImage("../images used/landscape/maxresdefault.jpg");
   pic2 = loadImage("../images used/landscape/stage-1-toyota-supra-turbo-is-just-a-slammed-appetizer-for-crazy-widebody-ideas-178819_1.jpg");
-=======
-  pic1 = loadImage("../images used/slammedsupramk5.jpg");
-  pic2 = loadImage("../images used/slammed gtr.jpg");
-  //pic3 = loadImage("../images used/slammed gtr.jpg");
-  font = loadFont("HarlowSolid-48.vlw");
->>>>>>> a3dd843ee26935cdac0c15c8e132d594d7e257b5
+  pic3 = loadImage("../images used/portrait/pexels-supreet-8359052.jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
   backgroundImageHeight = appHeight-1;
-  backgroundImageX2 = appWidth * 11/20;
-  backgroundImageY2 = appHeight * 0/20;
-  backgroundImageWidth2 = appWidth * 9/20;
-  backgroundImageHeight2 = appHeight * 8/20;
-  bottomX = appWidth * 11/20;
-  bottomY = appHeight * 0/20;
-  bottomWidth = appWidth * 9/20;
-  bottomHeight = appHeight * 8/20;
-  topX = appWidth * 1/20;
-  topY = appHeight * 4/6;
-  topWidth = appWidth * 6/20;
-  topHeight = appHeight * 6/20;
-  textX1 = appWidth * 2/20;
-  textY1 = appHeight * 13/20;
-  textX2 = appWidth *13/20;
-  textY2 = appHeight * 9/20;
+  topX = appWidth * 1/4;
+  topY = appHeight * 1/20;
+  topWidth = appWidth * 1/2;
+  topHeight = appHeight * 13/20;
+  bottomX = appWidth *1/2;
+  bottomY = appHeight * 3/4;
+  bottomWidth = appWidth * 1/4;
+  bottomHeight = appHeight * 4/20;
   //
-<<<<<<< HEAD
+  //Image Dimensions for Aspect Ratio: image meta data
+  //Note: meta explored in MP3's or music files
+  //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth1 = 1280;//indian man
   int picHeight1 = 720;
   int picWidth2 = 1920;//grey/red slammed supra
   int picHeight2 = 1080;
+  int picWidth3 = 2121;//black slammed supra
+  int picHeight3 = 3771;
   //
-  float smallerDimension1, largerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
-=======
-  int picWidth1 = 1706;//slammed supra mk5
-  int picHeight1 = 960;
-  int picWidth2 = 1080;//slammed nissan gtr
-  int picHeight2 = 1344;
-  //int picWidth3 = 2121;//black slammed supra
-  //int picHeight3 = 3771;
-  //
+  //Image Orientation: Landscape, Square, Portrait
   float smallerDimension1, largerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
   float smallerDimension2, largerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
->>>>>>> a3dd843ee26935cdac0c15c8e132d594d7e257b5
-  if ( picWidth1 >= picHeight1 ) {
+  float smallerDimension3, largerDimension3, imageWidthRatio3=0.0, imageHeightRatio3=0.0;
+  if ( picWidth1 >= picHeight1 ) { //True if Landscape or Square
     largerDimension1 = picWidth1;
     smallerDimension1 = picHeight1;
     //
-    picWidthAdjusted1 = backgroundImageWidth;
+    //Landscape Image larger image to smaller rectangle (or larger)
+    picWidthAdjusted1 = backgroundImageWidth; //stretch or reduce
     imageHeightRatio1 = smallerDimension1 / largerDimension1;
     picHeightAdjusted1 = picWidthAdjusted1 * imageHeightRatio1;
     //
-    if ( picHeightAdjusted1 > backgroundImageHeight ) {
+    if ( picHeightAdjusted1 > backgroundImageHeight ) { //Error Catch
     println(picHeightAdjusted1, backgroundImageHeight);
-      println("STOP: image #1 width is too big for rectangle layout");
-      exit();
+      println("STOP: image is too big for rectangle layout");
+      exit(); //stop further use of the APP
     }
-  } else {
+  } else { //False if Portrait
     largerDimension1 = picHeight1;
     smallerDimension1 = picWidth1;
     //
-    picHeightAdjusted1 = backgroundImageHeight;
+    //Students to create
+    picHeightAdjusted1 = backgroundImageHeight; //stretch or reduce
     imageWidthRatio1 = smallerDimension1 / largerDimension1;
     picWidthAdjusted1 = picHeightAdjusted1 * imageWidthRatio1;
     if ( picWidthAdjusted1 > backgroundImageWidth ) {
-      println("STOP: image #1 height is too big for rectangle layout");
-      exit();
+      println("STOP: image is too big for rectangle layout");
+      exit(); //stop further use of the APP
     }
   }
-<<<<<<< HEAD
-=======
-    if ( picWidth2 >= picHeight2 ) {
+    if ( picWidth2 >= picHeight2 ) { //True if Landscape or Square
     largerDimension2 = picWidth2;
     smallerDimension2 = picHeight2;
     //
-    picWidthAdjusted2 = topWidth;
+    //Landscape Image larger image to smaller rectangle (or larger)
+    picWidthAdjusted2 = topWidth; //stretch or reduce
     imageHeightRatio2 = smallerDimension2 / largerDimension2;
     picHeightAdjusted2 = picWidthAdjusted2 * imageHeightRatio2;
     //
-    if ( picHeightAdjusted2 > topHeight ) {
-      println("STOP: image #2 width is too big for rectangle layout");
-      exit();
+    if ( picHeightAdjusted2 > topHeight ) { //Error Catch
+      println("STOP: image is too big for rectangle layout");
+      exit(); //stop further use of the APP
     }
-  } else {
+  } else { //False if Portrait
     largerDimension2 = picHeight2;
     smallerDimension2 = picWidth2;
     //
-    picHeightAdjusted2 = topHeight;
+    //Students to create
+    picHeightAdjusted2 = topHeight; //stretch or reduce
     imageWidthRatio2 = smallerDimension2 / largerDimension2;
     picWidthAdjusted2 = picHeightAdjusted2 * imageWidthRatio2;
     if ( picWidthAdjusted2 > topWidth ) {
-      println("STOP: image #2 height is too big for rectangle layout");
-      exit();
+      println("STOP: image is too big for rectangle layout");
+      exit(); //stop further use of the APP
     }
   }
->>>>>>> a3dd843ee26935cdac0c15c8e132d594d7e257b5
+    if ( picWidth3 >= picHeight3 ) { //True if Landscape or Square
+    largerDimension3 = picWidth3;
+    smallerDimension3 = picHeight3;
+    //
+    //Landscape Image larger image to smaller rectangle (or larger)
+    picWidthAdjusted3 = bottomWidth; //stretch or reduce
+    imageHeightRatio3 = smallerDimension3 / largerDimension3;
+    picHeightAdjusted3 = picWidthAdjusted3 * imageHeightRatio3;
+    //
+    if ( picHeightAdjusted3 > bottomHeight ) { //Error Catch
+      println("STOP: image is too big for rectangle layout");
+      exit(); //stop further use of the APP
+    }
+  } else { //False if Portrait
+    largerDimension3 = picHeight3;
+    smallerDimension3 = picWidth3;
+    //
+    //Students to create
+    picHeightAdjusted3 = bottomHeight; //stretch or reduce
+    imageWidthRatio3 = smallerDimension3 / largerDimension3;
+    picWidthAdjusted3 = picHeightAdjusted3 * imageWidthRatio3;
+    if ( picWidthAdjusted3 > bottomWidth ) {
+      println("STOP: image is too big for rectangle layout");
+      exit(); //stop further use of the APP
+    }
+  }
   //
+  //Rectangular Layout and Image Drawing to CANVAS
+  //rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
   rect( topX, topY, topWidth, topHeight );
-  //rect( bottomX, bottomY, bottomWidth, bottomHeight );
+  rect( bottomX, bottomY, bottomWidth, bottomHeight );
   //
+  //Background Image must be single executed code
   if ( nightMode == false ) tint(tintDayMode, tintDayModeOpacity); //Gray Scale, Day use: use 1/2 tint value for white (i.e. 128/256=1/2)
   if ( nightMode == true ) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
   image( pic1, backgroundImageX, backgroundImageY, picWidthAdjusted1, picHeightAdjusted1);
@@ -130,12 +142,7 @@ void setup()
 void draw()
 {
   image(pic2, topX, topY, picWidthAdjusted2, picHeightAdjusted2);
-  //image(pic3, bottomX, bottomY, bottomWidth, bottomHeight);
-  image(pic2, backgroundImageX2, backgroundImageY2, backgroundImageWidth2, backgroundImageHeight2);
-  text("Without Aspect Ratio", textX2, textY2);
-  fill(0);
-  textSize(30);
-  text("With Aspect Ratio", textX1, textY1);
+  image(pic3, bottomX, bottomY, picWidthAdjusted3, picHeightAdjusted3);
 }//End draw
 //
 void keyPressed() {
@@ -143,6 +150,7 @@ void keyPressed() {
 //
 void mousePressed() {
   //  
+  //Mouse Pressed will control background image
   if ( mouseButton == LEFT) {
     nightMode = true;
     rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
@@ -152,7 +160,7 @@ void mousePressed() {
   if ( mouseButton == RIGHT ) {
     nightMode = false;
     rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-    tint(255, 50);
+    tint(255, 50); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
     image(pic1, backgroundImageX, backgroundImageY, picWidthAdjusted1, picHeightAdjusted1);
   }
 }//End mousePressed
