@@ -4,9 +4,7 @@ float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageH
 float topX, topY, topWidth, topHeight;
 float bottomX, bottomY, bottomWidth, bottomHeight;
 float picWidthAdjusted1=0.0, picHeightAdjusted1=0.0;
-float picWidthAdjusted2=0.0, picHeightAdjusted2=0.0;
-float picWidthAdjusted3=0.0, picHeightAdjusted3=0.0;
-PImage pic1, pic2, pic3;
+PImage pic1, pic2;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
 //
@@ -19,7 +17,6 @@ void setup()
   //Population
   pic1 = loadImage("../images used/landscape/maxresdefault.jpg");
   pic2 = loadImage("../images used/landscape/stage-1-toyota-supra-turbo-is-just-a-slammed-appetizer-for-crazy-widebody-ideas-178819_1.jpg");
-  pic3 = loadImage("../images used/portrait/pexels-supreet-8359052.jpg");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -37,12 +34,8 @@ void setup()
   int picHeight1 = 720;
   int picWidth2 = 1920;//grey/red slammed supra
   int picHeight2 = 1080;
-  int picWidth3 = 2121;//black slammed supra
-  int picHeight3 = 3771;
   //
   float smallerDimension1, largerDimension1, imageWidthRatio1=0.0, imageHeightRatio1=0.0;
-  float smallerDimension2, largerDimension2, imageWidthRatio2=0.0, imageHeightRatio2=0.0;
-  float smallerDimension3, largerDimension3, imageWidthRatio3=0.0, imageHeightRatio3=0.0;
   if ( picWidth1 >= picHeight1 ) {
     largerDimension1 = picWidth1;
     smallerDimension1 = picHeight1;
@@ -64,54 +57,6 @@ void setup()
     imageWidthRatio1 = smallerDimension1 / largerDimension1;
     picWidthAdjusted1 = picHeightAdjusted1 * imageWidthRatio1;
     if ( picWidthAdjusted1 > backgroundImageWidth ) {
-      println("STOP: image is too big for rectangle layout");
-      exit();
-    }
-  }
-    if ( picWidth2 >= picHeight2 ) {
-    largerDimension2 = picWidth2;
-    smallerDimension2 = picHeight2;
-    //
-    picWidthAdjusted2 = topWidth;
-    imageHeightRatio2 = smallerDimension2 / largerDimension2;
-    picHeightAdjusted2 = picWidthAdjusted2 * imageHeightRatio2;
-    //
-    if ( picHeightAdjusted2 > topHeight ) {
-      println("STOP: image is too big for rectangle layout");
-      exit();
-    }
-  } else {
-    largerDimension2 = picHeight2;
-    smallerDimension2 = picWidth2;
-    //
-    picHeightAdjusted2 = topHeight;
-    imageWidthRatio2 = smallerDimension2 / largerDimension2;
-    picWidthAdjusted2 = picHeightAdjusted2 * imageWidthRatio2;
-    if ( picWidthAdjusted2 > topWidth ) {
-      println("STOP: image is too big for rectangle layout");
-      exit();
-    }
-  }
-    if ( picWidth3 >= picHeight3 ) {
-    largerDimension3 = picWidth3;
-    smallerDimension3 = picHeight3;
-    //
-    picWidthAdjusted3 = bottomWidth;
-    imageHeightRatio3 = smallerDimension3 / largerDimension3;
-    picHeightAdjusted3 = picWidthAdjusted3 * imageHeightRatio3;
-    //
-    if ( picHeightAdjusted3 > bottomHeight ) { //Error Catch
-      println("STOP: image is too big for rectangle layout");
-      exit();
-    }
-  } else { 
-    largerDimension3 = picHeight3;
-    smallerDimension3 = picWidth3;
-    //
-    picHeightAdjusted3 = bottomHeight;
-    imageWidthRatio3 = smallerDimension3 / largerDimension3;
-    picWidthAdjusted3 = picHeightAdjusted3 * imageWidthRatio3;
-    if ( picWidthAdjusted3 > bottomWidth ) {
       println("STOP: image is too big for rectangle layout");
       exit();
     }
