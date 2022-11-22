@@ -10,6 +10,7 @@ PImage pic1, pic2;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50, tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
 PFont font;
+float textX1, textY1, textX2, textY2;
 //
 void setup()
 {
@@ -38,6 +39,10 @@ void setup()
   topY = appHeight * 3/4;
   topWidth = appWidth * 1/4;
   topHeight = appHeight * 4/20;
+  textX1 = appWidth * 11/20;
+  textY1 = appHeight * 8/20;
+  textX2 = appWidth * 1/20;
+  textY2 = appHeight * 14.7/20;
   //
   //Image Dimensions for Aspect Ratio: image meta data
   //Note: meta explored in MP3's or music files
@@ -116,9 +121,11 @@ void setup()
 //
 void draw()
 {
-  text("Without aspect ratio", 50, 50);
   image(pic2, backgroundImageX2, backgroundImageY2, backgroundImageWidth2, backgroundImageHeight2);
   image(pic2, topX, topY, picWidthAdjusted2, picHeightAdjusted2);
+  textSize(45);
+  text("Without aspect ratio", textX1, textY1);
+  text("With aspect ratio", textX2, textY2);
 }//End draw
 //
 void keyPressed() {
@@ -136,7 +143,7 @@ void mousePressed() {
   if ( mouseButton == RIGHT ) {
     nightMode = false;
     rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-    tint(255, 50); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
+    tint(100, 70); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
     image(pic1, backgroundImageX, backgroundImageY, picWidthAdjusted1, picHeightAdjusted1);
   }
 }//End mousePressed
